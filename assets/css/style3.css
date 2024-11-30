@@ -1,0 +1,253 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+}
+body {
+    height: 100vh ;
+    width: 100%;
+    padding-bottom: 100px; /* Ajoute de l'espace au bas pour le footer */
+    display: flex;
+    flex-direction: column; 
+    overflow: visible;/* Arrange content vertically */
+    background-color: #e9edc9;
+    overflow-y: scroll;
+}
+
+html,body{
+    height: 100%;
+}
+#cnv {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Place le canvas derrière les autres éléments */
+    pointer-events: none;
+}
+/* Style du menu */
+nav {
+    background-color: #283618; /* Fond plus sombre pour le menu */
+    padding: 10px 0;
+    width: 150%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Alignement du logo à gauche */
+    position: relative;
+    z-index: 2; /* Pour que le menu reste au-dessus de la neige */
+    width: 100%; /* Utilise la largeur complète de la fenêtre */
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    margin-top: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Centre les liens horizontalement */
+    width: 100%;  /* Assure que la liste prend toute la largeur */
+}
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    padding: 10px 20px;
+    display: inline-block;  /* Utilise un bloc en ligne pour ne pas prendre toute la largeur */
+    text-align: center;  /* Centre le texte */
+    background-color: #283618;
+}
+nav ul li a:hover {
+    background-color: #455A64;  /* Change la couleur de fond lors du survol */
+}
+
+nav ul li a:hover {
+    background-color: #4b5630;
+    border-radius: 5px;
+}
+nav ul li ul {
+    display: none;
+    position: absolute;
+    list-style-type: none;
+}
+
+nav ul li:hover ul {
+    display: block;
+}
+
+nav img {
+    max-height: 50px; /* Taille du logo */
+    margin-left: 20px;
+}
+
+input[type="text"] {
+    font-size:12px;
+    font-family: 'Fuzzy Bubbles', cursive;}
+  button[type="submit"] {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 20px;
+    font-size: 24px;
+    border-radius: 8px;
+    font-family: 'Smooch', cursive;
+    color: rgb(24, 75, 18);
+    text-align: center;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s ease background-color;
+  }
+  button[type="submit"]:hover {
+    background-color: rgb(157, 235, 120);
+  }
+  .container{
+    width:30px;
+    margin: 0px 100px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px rgb(0, 0, 0,0.75);
+    
+}
+.cap {
+    position: absolute; /* Position relative to the .container */
+    top: -40px; /* Adjust vertically */
+    left: -30px; /* Adjust horizontally */
+    z-index: 10; /* Ensures it appears above other elements */
+}
+
+
+    .cap img {
+        width: 130px; /* Adjust size */
+        height: 120px;
+    }
+.bodyy {
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Full viewport height */
+    display: flex; /* Flexbox for centering */
+    align-items: center; /* Vertical centering */
+    justify-content: center; /* Horizontal centering */
+    background-color: #e9edc9; /* Page background color */
+    font-family: 'Courier New', Courier, monospace; /* Apply font globally */
+}
+
+.container {
+    position: relative; /* Enables positioning for child elements */
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 0 50px;
+    width: 360px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    overflow: visible;
+    display: block; /* Ensures the cap is visible outside the container */
+}
+
+form {
+    display: flex;
+    flex-direction: column; 
+    gap: 15px; 
+    margin: 0 auto; 
+    text-align: left; 
+}
+
+form input, 
+form textarea, 
+form button {
+    width: 100%; 
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+form textarea {
+    resize: vertical; 
+    height: 80px;
+}
+
+form button {
+    background-color: white;
+    color: #f70700;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #d00600;
+    color: white;
+}
+
+.footer {
+    width: 100%; /* Prend toute la largeur de la page */
+    background-color: #283618;
+    color: white;
+    margin-top: auto;
+    padding: 30px 20px;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    position: static; /* Fixe le footer au bas */
+    bottom: 0; /* Assure qu'il reste en bas */
+    left: 0; /* S'assure qu'il commence du côté gauche */
+    right: 0; /* Et va jusqu'au côté droit */
+    z-index: 10; /* Assure que le footer est visible */
+}
+
+
+.footer-content {
+    max-width: 100%; /* Le contenu occupe toute la largeur disponible */
+    margin: 0 auto; /* Centre le contenu horizontalement */
+}
+
+.footer-links {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center; /* Centre les liens horizontalement */
+}
+
+.footer-links li {
+    margin: 0 15px; /* Espacement entre les liens */
+}
+
+.footer-links a {
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+/* Liens des réseaux sociaux */
+.footer-socials p {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.footer-socials ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    font-family: 'Times New Roman', Times, serif;
+    justify-content: center; /* Centre les icônes des réseaux sociaux */
+}
+
+.footer-socials li {
+    margin: 0 10px; /* Espacement entre les icônes */
+}
+
+.footer-socials a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Times New Roman', Times, serif;
+}

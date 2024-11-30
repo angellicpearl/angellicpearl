@@ -1,0 +1,377 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    margin: 0; /* Enlève les marges par défaut */
+    padding-bottom: 100px; /* Ajoute de l'espace au bas pour le footer */
+    margin: 0;
+    background-color: #e9edc9;
+    /* Supprimer ou modifier cette ligne */
+    overflow: visible; /* Permet au canvas de déborder */
+}
+
+#cnv {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Place le canvas derrière les autres éléments */
+    pointer-events: none;
+}
+/* Style du menu */
+nav {
+    background-color: #283618; /* Fond plus sombre pour le menu */
+    padding: 10px 0;
+    width: 150%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Alignement du logo à gauche */
+    position: relative;
+    z-index: 2; /* Pour que le menu reste au-dessus de la neige */
+    width: 100%; /* Utilise la largeur complète de la fenêtre */
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    margin-top: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Centre les liens horizontalement */
+    width: 100%;  /* Assure que la liste prend toute la largeur */
+}
+nav ul li {
+    margin-right: 20px;
+    position: relative;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    padding: 10px 20px;
+    display: inline-block;  /* Utilise un bloc en ligne pour ne pas prendre toute la largeur */
+    text-align: center;  /* Centre le texte */
+    transition: background-color 0.3s ease;
+}
+nav ul li a:hover {
+    background-color: #455A64;  /* Change la couleur de fond lors du survol */
+}
+/* Dropdown menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #444;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    min-width: 150px;
+    z-index: 1000;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.dropdown-menu li a {
+    padding: 10px 15px;
+    display: block;
+    color: white;
+    background-color: #444;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #575757;
+}
+
+/* Montrer le menu dropdown au survol */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+nav img {
+    max-height: 50px; /* Taille du logo */
+    margin-left: 20px;
+}
+.reserve-btn {
+    background-color: #283618; /* Couleur du fond du bouton */
+    color: white;               /* Texte en blanc */
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.reserve-btn:hover {
+    background-color: #f39c12; /* Changement de couleur au survol */
+    transform: scale(1.1);      /* Effet d'agrandissement au survol */
+}
+
+.reserve-btn:active {
+    transform: scale(1); /* Retour à la taille normale au clic */
+}
+/* Bande sous le menu */
+.site-description {
+    background-color: #283618;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.site-description p {
+    margin: 0;
+    flex-grow: 1;
+    font-size: 20px;
+    line-height: 1.6;
+    color: #fff;
+}
+
+.site-description h2 {
+    font-size: 30px;
+    color: #fff;
+    font-weight: bold;
+    margin: 0 0 15px 0;
+}
+nav ul li ul {
+    display: none;
+    position: absolute;
+    list-style-type: none;
+}
+
+nav ul li:hover ul {
+    display: block;
+}
+.container{
+    width:40px;
+    margin: 0px 100px;
+    margin-bottom: auto;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px rgb(0, 0, 0,0.75);
+ 
+}
+/* Event Images Grid */
+.event-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    width: 100%;
+    justify-content: flex-end;
+}
+.event-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+.event-images img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    justify-self: end;
+}
+
+/* Event Card Styling */
+.event-card {
+    width: 300px;
+    min-height: 350px; /* Augmente la hauteur minimale */
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    transition: 3s all ease;
+    flex: 1;
+}
+
+.event-card:hover {
+    flex: 2;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+/* Image de l'événement */
+.event-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 5px solid #f1f1f1;
+}
+
+/* Conteneur des détails de l'événement */
+.event-details {
+    display: flex;
+    flex-direction: column; /* Met les éléments en colonne */
+    justify-content: space-between; /* Ajoute de l'espace entre les éléments */
+    flex-grow: 1;
+    height: 100%; /* Force les détails à remplir toute la hauteur disponible */
+    margin-top: 10px;
+    text-align: center; /* Centre le texte */
+}
+
+.event-title {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+.event-title:hover {
+    color: #d35c5c;
+}
+#t2{
+    text-align: center;
+    color: red;
+    position: relative;
+    font-size: 40px;
+    background-color: #e9edc9;
+}
+
+/* Description de l'événement */
+.event-description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+    text-align: center; /* S'assure que la description est centrée */
+}
+
+.event-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #27ae60;
+    margin-bottom: 20px;
+}
+/* Animation du prix au survol */
+.event-price:hover {
+    transform: scale(1.1);
+}
+
+/* Bouton Réserver */
+.event-button {
+    background-color: #d35c5c; /* Couleur du bouton */
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%; /* Largeur de bouton égale à la carte */
+    transition: background-color 0.3s ease;
+}
+
+/* Effet au survol du bouton */
+.event-button:hover {
+    background-color: #a94d4d; /* Couleur du bouton au survol */
+}
+  #status {
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    padding: 10px;
+    margin: 0 auto;
+    border-radius: 8px;
+  }
+  #status.success {
+    background-color: rgb(211, 250, 153);
+    animation: status 4s ease forwards;
+  }
+  #status.error {
+    background-color: rgb(250, 129, 92);
+    color: white;
+    animation: status 4s ease forwards;
+  }
+
+  .footer {
+    width: 100%; /* Prend toute la largeur de la page */
+    background-color: #283618;
+    color: white;
+    padding: 30px 20px;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    position: fixed; /* Fixe le footer au bas */
+    bottom: 0; /* Assure qu'il reste en bas */
+    left: 0; /* S'assure qu'il commence du côté gauche */
+    right: 0; /* Et va jusqu'au côté droit */
+    z-index: 100; /* S'assure qu'il soit au-dessus du contenu */
+}
+
+
+.footer-content {
+    max-width: 100%; /* Le contenu occupe toute la largeur disponible */
+    margin: 0 auto; /* Centre le contenu horizontalement */
+}
+
+.footer-links {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center; /* Centre les liens horizontalement */
+}
+
+.footer-links li {
+    margin: 0 15px; /* Espacement entre les liens */
+}
+
+.footer-links a {
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease; /* Transition douce pour la couleur */
+}
+
+/* Liens des réseaux sociaux */
+.footer-socials p {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.footer-socials ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    font-family: 'Times New Roman', Times, serif;
+    justify-content: center; /* Centre les icônes des réseaux sociaux */
+}
+
+.footer-socials li {
+    margin: 0 10px; /* Espacement entre les icônes */
+}
+
+.footer-socials a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Times New Roman', Times, serif;
+    transition: color 0.3s ease; /* Transition douce pour la couleur */
+}
+
+/* Ajout d'un effet au survol des liens */
+.footer-links a:hover,
+.footer-socials a:hover {
+    text-decoration: underline; /* Ajout d'un soulignement au survol */
+    color: #f39c12; /* Change la couleur au survol */
+}
+	

@@ -1,0 +1,98 @@
+/* Style de base */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e9edc9;
+}
+
+/* Conteneur principal pour les détails */
+.reservation-details-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #e9edc9;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    flex-direction: column; /* Permet d'avoir le contenu organisé en colonnes */
+    align-items: center;
+    
+}
+
+/* En-tête de l'événement */
+.event-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.event-header h2 {
+    font-size: 2em;
+    color: #333;
+}
+
+.event-header h3 {
+    font-size: 1.5em;
+    color: #555;
+    margin-top: 10px;
+}
+
+/* Détails de l'événement */
+.event-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.event-details {
+    text-align: center;
+}
+.event-details .event-image {
+    width: 40%;
+    align-items: center;
+}
+
+.event-details .event-image img {
+    width: 200%;
+    border-radius: 8px;
+    margin-left: 130px;
+}
+
+.event-details .event-info {
+    width: 90%;
+    padding: 20px;
+    background-color: #a73e3e;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-left: 30px;
+}
+
+.event-details .event-info p {
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+
+.event-details .event-info strong {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Actions de réservation */
+.event-actions {
+    text-align: center;
+}
+
+.reserve-btn {
+    background-color: #28a745;
+    color: white;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.reserve-btn:hover {
+    background-color: #218838;
+}
