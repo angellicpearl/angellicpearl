@@ -2,17 +2,14 @@
 <?php
 session_start(); // Démarrer la session
 require_once('connexion.php');
-
 // Vérifier si un event_id est passé dans l'URL pour afficher les détails de l'événement
 $event_id = isset($_GET['event_id']) ? $_GET['event_id'] : null;
-
 if ($event_id) {
     // Récupérer les détails de l'événement
     $sql = "SELECT * FROM events WHERE id = ?";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$event_id]);
     $event = $stmt->fetch(PDO::FETCH_ASSOC);
-
     // Si l'événement n'existe pas
     if (!$event) {
         die("Événement introuvable.");
@@ -45,15 +42,15 @@ if ($event_id) {
                     <li><a href="event.php"> Ajouter un événement</a></li>
                 </ul>
             </li>
-        <li><a href="mon-compte.php">Mon compte</a></li>
+            <li><a href="mon-compte.php">Mon compte</a></li>
 
         <?php if (isset($_SESSION['user_id'])): ?>
-          
-            <li>Bonjour, <?php echo htmlspecialchars($_SESSION['user_name'] ?? 'Invité'); ?></li>
-  
+            <li class="user-greeting">
+                Bonjour, <?php echo htmlspecialchars($_SESSION['user_name']); ?>
+            </li>
             <li><a href="déconnexion.php">Se déconnecter</a></li>
-                        <!-- Si l'utilisateur est administrateur -->
-                        <?php if ($_SESSION['isadmin'] == 1): ?>
+            <!-- Si l'utilisateur est administrateur -->
+            <?php if ($_SESSION['isadmin'] == 1): ?>
             <?php endif; ?>
         <?php else: ?>
             <li><a href="inscription.php">Connexion</a></li>

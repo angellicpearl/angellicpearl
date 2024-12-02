@@ -17,25 +17,28 @@ $isAdmin = $_SESSION['isadmin'];
         <canvas id="cnv"></canvas>
         <img src="assets/images/santa.jpeg" alt="Logo">
         <ul>
-            <li><a href="index.php">Accueil</a></li>
-            <li class="dropdown">
-                    <a href="#">Événements à venir ▼</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="liste-event.php">Liste des événements </a></li>
-                        <li><a href="event.php"> Ajouter un événement</a></li>
-                    </ul>
-                </li>
-            <li><a href="#contact">Mon compte</a></li>
+        <li><a href="index.php">Accueil</a></li>
+        <li class="dropdown">
+                <a href="#">Événements à venir ▼</a>
+                <ul class="dropdown-menu">
+                    <li><a href="liste-event.php">Liste des événements </a></li>
+                    <li><a href="event.php"> Ajouter un événement</a></li>
+                </ul>
+            </li>
+            <li><a href="mon-compte.php">Mon compte</a></li>
 
-            <?php if (isset($_SESSION['user_id'])): ?>
-            
-                <li>Bonjour, <?php echo htmlspecialchars($_SESSION['user_name'] ?? 'Invité'); ?></li>
-    
-                <li><a href="déconnexion.php">Se déconnecter</a></li>
-            <?php else: ?>
-                <li><a href="inscription.php">Connexion</a></li>
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <li class="user-greeting">
+                Bonjour, <?php echo htmlspecialchars($_SESSION['user_name']); ?>
+            </li>
+            <li><a href="déconnexion.php">Se déconnecter</a></li>
+            <!-- Si l'utilisateur est administrateur -->
+            <?php if ($_SESSION['isadmin'] == 1): ?>
             <?php endif; ?>
-        </ul>
+        <?php else: ?>
+            <li><a href="inscription.php">Connexion</a></li>
+        <?php endif; ?>
+    </ul>
     </nav>
 
     <!-- Liste des événements -->
@@ -57,6 +60,9 @@ $isAdmin = $_SESSION['isadmin'];
                 <?php if ($isAdmin==1): ?>
                     <a href="edit-event.php?id=<?= $row['id']; ?>" class="btn btn-edit">Modifier</a>
                     <a href="delete-event.php?id=<?php echo $row['id']; ?>" class="btn btn-delete" onclick="return confirm('Voulez-vous vraiment supprimer cet événement ?')">Supprimer</a>
+                <?php else: ?>
+                    <!-- Si l'utilisateur n'est pas administrateur, afficher le bouton réserver -->
+                    <a href="reservation.php?event_id=<?php echo $row['id']; ?>" class="btn btn-reserve">Réserver</a>
                 <?php endif; ?>
             </div>
         </div>

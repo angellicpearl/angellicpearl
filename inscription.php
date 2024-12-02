@@ -105,6 +105,14 @@ session_start(); // Démarrer la session
             <li><a href="#">Contact</a></li>
         </ul>
     </div>
+    <div class="footer-socials">
+        <p>Suivez-nous :</p>
+        <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Instagram</a></li>
+        </ul>
+    </div>
 </footer>
 <script>
 document.getElementById('inscriptionForm').addEventListener('submit', function(event) {

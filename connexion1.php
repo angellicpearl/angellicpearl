@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 // Configuration de la base de données
 $db = 'event';
 $host = 'localhost';
@@ -10,7 +9,6 @@ $password = 'dsi2425';
 // Activer l'affichage des erreurs PHP (débogage)
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-
 try {
     // Connexion à la base de données avec PDO
     $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $password);

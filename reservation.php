@@ -26,8 +26,7 @@ if ($event_id) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Réservation</title>
-    <link rel="stylesheet" href="assets/css/style2.css">
-    <link rel="stylesheet" href="assets/css/reservation.css">
+    <link rel="stylesheet" href="assets/css/compte.css">
 </head>
 <script>
         var isUserLoggedIn = <?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>;
@@ -47,11 +46,23 @@ if ($event_id) {
     <img src="assets/images/santa.jpeg">
     <ul>
         <li><a href="index.php">Accueil</a></li>
-        <li><a href="liste-event.php">Liste des événements</a></li>
-        <li><a href="mon-compte.php">Mon compte</a></li>
+        <li class="dropdown">
+                <a href="#">Événements à venir ▼</a>
+                <ul class="dropdown-menu">
+                    <li><a href="liste-event.php">Liste des événements </a></li>
+                    <li><a href="event.php"> Ajouter un événement</a></li>
+                </ul>
+            </li>
+            <li><a href="mon-compte.php">Mon compte</a></li>
+
         <?php if (isset($_SESSION['user_id'])): ?>
-            <li>Bonjour, <?php echo htmlspecialchars($_SESSION['user_name'] ?? 'Invité'); ?></li>
+            <li class="user-greeting">
+                Bonjour, <?php echo htmlspecialchars($_SESSION['user_name']); ?>
+            </li>
             <li><a href="déconnexion.php">Se déconnecter</a></li>
+            <!-- Si l'utilisateur est administrateur -->
+            <?php if ($_SESSION['isadmin'] == 1): ?>
+            <?php endif; ?>
         <?php else: ?>
             <li><a href="inscription.php">Connexion</a></li>
         <?php endif; ?>
@@ -65,23 +76,24 @@ if ($event_id) {
     </div>
 
     <div class="event-details">
-
-
         <div class="event-info">
-            <p><strong>Description:</strong> <?php echo htmlspecialchars($event['description']); ?></p>
-            <p><strong>Date:</strong> <?php echo htmlspecialchars($event['date']); ?></p>
-            <p><strong>Prix:</strong> <?php echo htmlspecialchars($event['price']); ?></p>
+            <form action="traiter_reservation.php" method="POST">
+            <label for="description">Description :</label>
+                <textarea id="description" readonly> <?php echo htmlspecialchars($event['description']); ?></p></textarea><br>
+                </labe>
+                <label for="prix">
+                <p><strong>Prix:</strong> <?php echo htmlspecialchars($event['price']); ?></p>
+                </label>
+                <input type="hidden" name="event_id" value="<?php echo $event['id']; ?>">
+                    <label for="places_demandees">Nombre de places :</label>
+                    <input type="number" name="places_demandees" id="places_demandees" min="1" max="<?php echo $event['places_disponibles']; ?>" required>
+                    <button class="reserve-btn" onclick="checkLoginAndReserve()" onclick="window.location.href='reservation.php?event_id=<?php echo $event['id']; ?>'">Réserver</button>
+            </div>
+                </form>
         </div>
     </div>
 
-    <div class="event-actions">
-        <form action="traiter_reservation.php" method="POST">
-            <input type="hidden" name="event_id" value="<?php echo $event['id']; ?>">
-            <label for="places_demandees">Nombre de places :</label>
-            <input type="number" name="places_demandees" id="places_demandees" min="1" max="<?php echo $event['places_disponibles']; ?>" required>
-            <button class="reserve-btn" onclick="checkLoginAndReserve()" onclick="window.location.href='reservation.php?event_id=<?php echo $event['id']; ?>'">Réserver</button>
-        </form>
-    </div>
+    
 </div>
 
 <footer class="footer">

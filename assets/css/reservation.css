@@ -18,6 +18,11 @@ body {
     align-items: center;
     
 }
+form textarea {
+    resize: vertical; /* Autorise le redimensionnement vertical */
+    min-height: 100px; /* Hauteur minimale */
+}
+
 
 /* En-tête de l'événement */
 .event-header {
@@ -58,15 +63,6 @@ body {
     margin-left: 130px;
 }
 
-.event-details .event-info {
-    width: 90%;
-    padding: 20px;
-    background-color: #a73e3e;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-left: 30px;
-}
-
 .event-details .event-info p {
     margin: 10px 0;
     font-size: 1.2em;
@@ -95,4 +91,40 @@ body {
 
 .reserve-btn:hover {
     background-color: #218838;
+}
+/* Style du message de bienvenue dans le menu */
+nav ul li.user-greeting {
+    font-family: 'Arial', sans-serif;
+    font-size: 18px; /* Taille du texte */
+    color: #4CAF50; /* Vert pour l'utilisateur connecté */
+    font-weight: bold; /* Mettre en gras */
+    padding: 8px 15px; /* Espacement interne */
+    border-radius: 5px; /* Coins arrondis */
+    background-color: #f1f1f1; /* Fond clair */
+    margin-left: 15px; /* Espacement avec les autres éléments */
+    display: flex;
+    align-items: center; /* Aligner verticalement */
+    transition: background-color 0.3s ease; /* Effet de transition au survol */
+}
+
+/* Style au survol */
+nav ul li.user-greeting:hover {
+    background-color: #e7f7e2; /* Fond légèrement plus clair au survol */
+}
+
+/* Pour les administrateurs, un style différent */
+nav ul li.user-greeting.admin {
+    color: #FF5722; /* Orange pour les administrateurs */
+    background-color: #fff3e0; /* Fond très clair */
+    border: 2px solid #FF5722; /* Bordure orange */
+}
+
+nav ul li.user-greeting.admin:hover {
+    background-color: #ffebee; /* Légère couleur au survol pour l'admin */
+}
+
+/* Ajout d'un petit icône à côté du nom (facultatif) */
+nav ul li.user-greeting::before {
+    content: "\1F44B"; /* Icône de main qui salue (👋) */
+    margin-right: 8px;
 }

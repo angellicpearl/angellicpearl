@@ -21,13 +21,16 @@ session_start(); // Démarrer la session
                     <li><a href="event.php"> Ajouter un événement</a></li>
                 </ul>
             </li>
-        <li><a href="#contact">Mon compte</a></li>
+            <li><a href="mon-compte.php">Mon compte</a></li>
 
         <?php if (isset($_SESSION['user_id'])): ?>
-          
-            <li>Bonjour, <?php echo htmlspecialchars($_SESSION['user_name'] ?? 'Invité'); ?></li>
-  
+            <li class="user-greeting">
+                Bonjour, <?php echo htmlspecialchars($_SESSION['user_name']); ?>
+            </li>
             <li><a href="déconnexion.php">Se déconnecter</a></li>
+            <!-- Si l'utilisateur est administrateur -->
+            <?php if ($_SESSION['isadmin'] == 1): ?>
+            <?php endif; ?>
         <?php else: ?>
             <li><a href="inscription.php">Connexion</a></li>
         <?php endif; ?>

@@ -14,7 +14,6 @@ body {
     background-color: #e9edc9;
     overflow-y: scroll;
 }
-
 #cnv {
     position: absolute;
     top: 0;
@@ -174,12 +173,47 @@ nav img {
     text-decoration: underline; /* Ajout d'un soulignement au survol */
     color: #f39c12; /* Change la couleur au survol */
 }
+/* Style du message de bienvenue dans le menu */
+nav ul li.user-greeting {
+    font-family: 'Arial', sans-serif;
+    font-size: 18px; /* Taille du texte */
+    color: #4CAF50; /* Vert pour l'utilisateur connecté */
+    font-weight: bold; /* Mettre en gras */
+    padding: 8px 15px; /* Espacement interne */
+    border-radius: 5px; /* Coins arrondis */
+    background-color: #f1f1f1; /* Fond clair */
+    margin-left: 15px; /* Espacement avec les autres éléments */
+    display: flex;
+    align-items: center; /* Aligner verticalement */
+    transition: background-color 0.3s ease; /* Effet de transition au survol */
+}
 
+/* Style au survol */
+nav ul li.user-greeting:hover {
+    background-color: #e7f7e2; /* Fond légèrement plus clair au survol */
+}
+
+/* Pour les administrateurs, un style différent */
+nav ul li.user-greeting.admin {
+    color: #FF5722; /* Orange pour les administrateurs */
+    background-color: #fff3e0; /* Fond très clair */
+    border: 2px solid #FF5722; /* Bordure orange */
+}
+
+nav ul li.user-greeting.admin:hover {
+    background-color: #ffebee; /* Légère couleur au survol pour l'admin */
+}
+
+/* Ajout d'un petit icône à côté du nom (facultatif) */
+nav ul li.user-greeting::before {
+    content: "\1F44B"; /* Icône de main qui salue (👋) */
+    margin-right: 8px;
+}
 /* Style général du formulaire */
 form {
-    width: 300px;
-    margin: 50px auto;
-    padding: 20px;
+    width: 400px;
+    margin: 70px auto;
+    padding: 40px;
     background-color: #f8f8f8;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -191,7 +225,35 @@ label {
     font-size: 14px;
     font-weight: bold;
 }
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f3f3f3;
+    color: #666;
+    font-size: 14px;
+    resize: none; /* Désactive le redimensionnement */
+    box-sizing: border-box;
+}
 
+/* En-tête de l'événement */
+.event-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.event-header h2 {
+    font-size: 2em;
+    color: #333;
+}
+
+.event-header h3 {
+    font-size: 1.5em;
+    color: #555;
+}
 input {
     width: 100%;
     padding: 8px;
@@ -199,6 +261,19 @@ input {
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
+}
+/* Centrer le conteneur de réservation */
+.reservation-details-container {
+    display: flex; /* Active Flexbox */
+    flex-direction: column; /* Dispose les éléments en colonne */
+    justify-content: center; /* Centre verticalement */
+    align-items: center; /* Centre horizontalement */
+    min-height: calc(100vh - 150px); /* Ajuste la hauteur pour prendre toute la fenêtre */
+    margin: 0 auto; /* Centre horizontalement */
+    padding: 20px;
+    background-color: #e9edc9; /* Couleur de fond si nécessaire */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optionnel : ajout d'ombre */
+    border-radius: 20px; /* Coins arrondis */
 }
 
 input[type="password"], input[type="email"], input[type="tel"] {
