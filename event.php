@@ -2,6 +2,10 @@
 session_start();
 
 require 'connexion.php';
+if (!isset($_SESSION['isadmin']) || $_SESSION['isadmin'] != 1) {
+    header("Location: index.php"); // Rediriger vers la page d'accueil
+    exit();
+}
 
 // Check if the form is submitted via POST
 //
@@ -66,8 +70,9 @@ try {
                 <a href="#">Événements à venir ▼</a>
                 <ul class="dropdown-menu">
                     <li><a href="liste-event.php">Liste des événements </a></li>
-                    <li><a href="event.php"> Ajouter un événement</a></li>
-                </ul>
+                    <?php if (isset($_SESSION['isadmin']) && $_SESSION['isadmin'] == 1): ?>
+                        <li><a href="event.php">Ajouter un événement</a></li>
+                    <?php endif; ?>               </ul>
             </li>
             <li><a href="mon-compte.php">Mon compte</a></li>
 
