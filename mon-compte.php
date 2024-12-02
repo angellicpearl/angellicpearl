@@ -27,8 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple">
 </head>
 <body>
+<canvas id="cnv"></canvas>
 <nav>
-    <canvas id="cnv"></canvas>
     <img src="assets/images/santa.jpeg">
     <ul>
         <li><a href="index.php">Accueil</a></li>
@@ -98,6 +98,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </ul>
     </div>
 </footer>
-<script src="./assets/js/snow.js"></script>
+<script src="assets/js/snow.js"></script>
 </body>
 </html>

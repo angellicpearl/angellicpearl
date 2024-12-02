@@ -139,6 +139,6 @@ try {
         </ul>
     </div>
 </footer>
-<script src="./assets/js/snow.js"></script>
+<script src="assets/js/snow.js"></script>
 </body>
 </html>

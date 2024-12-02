@@ -12,9 +12,9 @@ $isAdmin = $_SESSION['isadmin'];
     <link rel="stylesheet" href="assets/css/liste-event.css">
 </head>
 <body>
+    <canvas id="cnv"></canvas>
     <!-- Menu de navigation -->
     <nav>
-        <canvas id="cnv"></canvas>
         <img src="assets/images/santa.jpeg" alt="Logo">
         <ul>
         <li><a href="index.php">Accueil</a></li>
@@ -92,11 +92,10 @@ $isAdmin = $_SESSION['isadmin'];
             </ul>
         </div>
     </footer>
-
+    <script src="assets/js/snow.js"></script>
     <?php
     // Inclure le fichier PHP qui contient la logique
     require_once('event-config.php');
     ?>
-    <script src="./assets/js/snow.js"></script>
 </body>
 </html>

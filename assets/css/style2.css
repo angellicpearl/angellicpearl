@@ -202,6 +202,14 @@ nav ul li:hover ul {
     box-shadow: 0px 0px 20px rgb(0, 0, 0,0.75);
  
 }
+.event-container.single-event {
+    display: flex;
+    width: 30%; /* Largeur réduite */
+    align-items: center;
+    justify-content: center; /* Centrer horizontalement */
+    margin: 20px auto; /* Centrer avec une marge automatique */
+}
+
 /* Event Images Grid */
 .event-images {
     display: grid;
@@ -228,7 +236,7 @@ nav ul li:hover ul {
 
 /* Event Card Styling */
 .event-card {
-    width: 300px;
+    width: auto;
     min-height: 350px; /* Augmente la hauteur minimale */
     background-color: #fff;
     border-radius: 20px;
@@ -277,6 +285,7 @@ nav ul li:hover ul {
     color: #d35c5c;
 }
 #t2{
+    margin-top: 20px;
     text-align: center;
     color: red;
     position: relative;
@@ -410,4 +419,32 @@ nav ul li:hover ul {
     text-decoration: underline; /* Ajout d'un soulignement au survol */
     color: #f39c12; /* Change la couleur au survol */
 }
-	
+.search-container {
+    display: flex; /* Afficher les éléments sur la même ligne */
+    align-items: center; /* Aligner verticalement les éléments */
+    gap: 10px; /* Espacement entre l'input et le bouton */
+    margin-right: 90px;
+
+}
+
+.search-container input {
+    padding: 6px;
+    font-size: 14px;
+    width: 300px; /* Ajuste la largeur de la barre de recherche selon ton besoin */
+}
+
+.search-container button {
+    padding: 6px 12px; /* Ajouter du padding au bouton */
+    font-size: 14px; /* Taille du texte du bouton */
+    background-color: #4CAF50; /* Couleur de fond du bouton */
+    color: white; /* Couleur du texte */
+    border: none;
+    border-radius: 4px; /* Coins arrondis du bouton */
+    cursor: pointer;
+}
+
+.search-container button:hover {
+    background-color: #45a049; /* Couleur de fond du bouton au survol */
+}
+
+

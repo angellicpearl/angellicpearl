@@ -8,7 +8,7 @@ use PHPMailer\PHPMailer\Exception;
 
 // Vérifier si l'utilisateur est connecté
 if (!isset($_SESSION['user_id'])) {
-    die("Vous devez être connecté pour effectuer une réservation.");
+    header("location : inscription.php");
 }
 
 // Vérifier si les données du formulaire sont envoyées

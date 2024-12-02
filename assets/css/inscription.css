@@ -20,14 +20,14 @@ html,body{
     height: 100%;
 }
 #cnv {
-    position: fixed;
+    position: fixed;  /* Le canvas doit être en position fixe pour ne pas être déplacé par le contenu */
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1; /* Place le canvas derrière les autres éléments */
-    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    z-index: -1;  /* Place le canvas derrière le contenu */
 }
+
 /* Style du message de bienvenue dans le menu */
 nav ul li.user-greeting {
     font-family: 'Arial', sans-serif;

@@ -8,7 +8,7 @@ $event_id = isset($_GET['event_id']) ? $_GET['event_id'] : null;
 if ($event_id) {
     // Récupérer les détails de l'événement
     $sql = "SELECT * FROM events WHERE id = ?";
-    $stmt = $dsb->prepare($sql); // Utilisez $dsb ici, pas $pdo
+    $stmt = $dsb->prepare($sql); 
     $stmt->execute([$event_id]);
     $event = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -39,10 +39,11 @@ if ($event_id) {
         alert("Réservation effectuée !");
     }
 }    
-    </script>
+</script>
 <body>
+<canvas id="cnv"></canvas>
+
 <nav>
-    <canvas id="cnv"></canvas>
     <img src="assets/images/santa.jpeg">
     <ul>
         <li><a href="index.php">Accueil</a></li>

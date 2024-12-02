@@ -14,13 +14,19 @@ body {
     background-color: #e9edc9;
     overflow-y: scroll;
 }
-#cnv {
+.reservation-details-container {
+    position: relative;
+    z-index: 10; /* Assure que ce conteneur est au-dessus du canvas */
+}
+
+canvas#cnv {
     position: absolute;
     top: 0;
     left: 0;
-    pointer-events: none; /* Permet de cliquer sur les éléments sous le canvas */
-    z-index: 1;  /* S'assurer que le canvas soit au-dessus des autres éléments */
+    z-index: 1; /* Assure que le canvas reste derrière le conteneur de réservation */
+    pointer-events: none; /* Empêche l'interaction avec le canvas */
 }
+
 /* Style du menu */
 nav {
     background-color: #283618; /* Fond plus sombre pour le menu */
@@ -30,7 +36,7 @@ nav {
     align-items: center;
     justify-content: flex-start; /* Alignement du logo à gauche */
     position: relative;
-    z-index: 2; /* Pour que le menu reste au-dessus de la neige */
+    z-index: 10; /* Pour que le menu reste au-dessus de la neige */
     width: 100%; /* Utilise la largeur complète de la fenêtre */
 }
 
@@ -65,33 +71,31 @@ nav ul li a {
 nav ul li a:hover {
     background-color: #455A64;  /* Change la couleur de fond lors du survol */
 }
-/* Dropdown menu */
-.dropdown-menu {
+nav .dropdown-menu {
     display: none;
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #444;
+    background-color: #283618;
     list-style: none;
     padding: 0;
     margin: 0;
     min-width: 150px;
-    z-index: 1000;
+    z-index: 20; /* Assure que le dropdown soit au-dessus du canvas */
     border-radius: 5px;
     overflow: hidden;
 }
 
-.dropdown-menu li a {
+nav .dropdown-menu li a {
     padding: 10px 15px;
     display: block;
     color: white;
-    background-color: #444;
+    background-color: #283618;
 }
 
-.dropdown-menu li a:hover {
-    background-color: #575757;
+nav .dropdown-menu li a:hover {
+    background-color: #283618;
 }
-
 /* Montrer le menu dropdown au survol */
 .dropdown:hover .dropdown-menu {
     display: block;
@@ -263,18 +267,43 @@ input {
     box-sizing: border-box;
 }
 /* Centrer le conteneur de réservation */
+/* Centrer le conteneur de réservation */
+/* Conteneur de la réservation avec flexbox */
 .reservation-details-container {
     display: flex; /* Active Flexbox */
     flex-direction: column; /* Dispose les éléments en colonne */
     justify-content: center; /* Centre verticalement */
     align-items: center; /* Centre horizontalement */
-    min-height: calc(100vh - 150px); /* Ajuste la hauteur pour prendre toute la fenêtre */
-    margin: 0 auto; /* Centre horizontalement */
+    height: 100vh; /* Prend toute la hauteur de la fenêtre */
     padding: 20px;
-    background-color: #e9edc9; /* Couleur de fond si nécessaire */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optionnel : ajout d'ombre */
+    background-color: #e9edc9; /* Couleur de fond */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour un effet */
     border-radius: 20px; /* Coins arrondis */
+    margin: 0 auto; /* Centre horizontalement */
+    max-width: 1000px; /* Limite la largeur du conteneur */
+    position: relative; /* Assure que le dropdown se positionne par rapport à ce conteneur */
+    z-index: 1; /* Assure que ce conteneur est au-dessus d'autres éléments si nécessaire */
 }
+
+/* Style du menu dropdown */
+nav .dropdown {
+    position: relative; /* Important pour que le menu déroulant s'affiche correctement */
+}
+
+nav .dropdown-menu {
+    display: none; /* Cacher le menu par défaut */
+    position: absolute; /* Positionner le menu à l'endroit voulu */
+    top: 100%; /* Placer le menu juste en dessous du bouton */
+    left: 0;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 2; /* Assurer que le menu déroulant est au-dessus du reste du contenu */
+}
+
+/* Afficher le dropdown au survol */
+nav .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
 
 input[type="password"], input[type="email"], input[type="tel"] {
     font-size: 16px;

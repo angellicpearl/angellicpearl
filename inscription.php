@@ -14,8 +14,9 @@ session_start(); // Démarrer la session
     <title>Form</title>
 </head>
 <body>
+<canvas id="cnv"></canvas>
+
 <nav>
-    <canvas id="cnv"></canvas>
     <img src="assets/images/santa.jpeg">
     <ul>
         <li><a href="index.php">Accueil</a></li>
@@ -184,5 +185,6 @@ function showError(fieldId, message) {
 }
 </script>
 <script src="assets/js/main.js"></script>
+<script src="assets/js/snow.js"></script>
 </body>
 </html>
